@@ -14,7 +14,6 @@ public class BookRepository implements ProjectRepository<Book> {
 
     private final Logger logger = Logger.getLogger(BookRepository.class);
     private final List<Book> books = new ArrayList<>();
-    private final List<Book> filteredBooks = new ArrayList<>();
 
     @Override
     public List<Book> retrieveAll() {
@@ -49,16 +48,20 @@ public class BookRepository implements ProjectRepository<Book> {
     }
 
     @Override
-    public List<Book> filterBooks(Long id, String author, String title, Integer size) {
-        filteredBooks.clear();
-        filteredBooks.addAll(books.stream()
+    public List<Book> filterBooks(Long id, String author, String title, Integer size, boolean union) {
+        if (union){
+            return books.stream().filter(book -> book.getId().equals(id) &&
+                    (book.getAuthor().contains(author)) &&
+                    (book.getTitle().contains(title)) &&
+                    (book.getSize().equals(size))).collect(Collectors.toList());
+        }
+
+        return books.stream()
                 .filter(book -> (id == null || book.getId().equals(id)) &&
                         (author.equals("") || book.getAuthor().contains(author)) &&
                         (title.equals("") || book.getTitle().contains(title)) &&
                         (size == null || book.getSize().equals(size)))
-                .collect(Collectors.toList()));
-
-        return filteredBooks;
+                .collect(Collectors.toList());
     }
 
     private boolean removeBySize(int size) {

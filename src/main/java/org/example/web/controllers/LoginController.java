@@ -24,7 +24,6 @@ public class LoginController {
 
     @GetMapping
     public String login(Model model) {
-        loginService.init();
         logger.info("GET /login returns login_page.html");
         model.addAttribute("user", new User());
         return "login_page";

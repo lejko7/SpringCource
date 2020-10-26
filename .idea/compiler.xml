@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="mod1_lesson6" />
+        <module name="Spring_Project" />
+        <module name="Spring _Project" />
         <module name="simple_mvc" />
-        <module name="Spring Project" />
       </profile>
     </annotationProcessing>
   </component>

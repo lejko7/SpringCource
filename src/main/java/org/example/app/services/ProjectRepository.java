@@ -12,5 +12,5 @@ public interface ProjectRepository<T> {
 
     boolean removeItem(EBookAttribute bookAttribute, String value);
 
-    List<Book> filterBooks(Long id, String author, String title, Integer size);
+    List<Book> filterBooks(Long id, String author, String title, Integer size, boolean union);
 }

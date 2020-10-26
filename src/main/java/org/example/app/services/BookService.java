@@ -29,7 +29,7 @@ public class BookService {
         return bookRepo.removeItem(bookAttribute, value);
     }
 
-    public List<Book> filterByParam(Long id, String author, String title, Integer size) {
-        return bookRepo.filterBooks(id, author, title, size);
+    public List<Book> filterByParam(Long id, String author, String title, Integer size, boolean union) {
+        return bookRepo.filterBooks(id, author, title, size, union);
     }
 }

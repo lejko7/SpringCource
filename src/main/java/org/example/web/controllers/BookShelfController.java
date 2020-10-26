@@ -60,9 +60,10 @@ public class BookShelfController {
                              @RequestParam(required = false) Long id,
                              @RequestParam(required = false) String author,
                              @RequestParam(required = false) String title,
-                             @RequestParam(required = false) Integer size) {
+                             @RequestParam(required = false) Integer size,
+                             @RequestParam(required = false) boolean union) {
         model.addAttribute("book", new Book());
-        model.addAttribute("bookList", bookService.filterByParam(id, author, title, size));
+        model.addAttribute("bookList", bookService.filterByParam(id, author, title, size, union));
         model.addAttribute("bookAttribute", EBookAttribute.values());
         return "book_shelf";
     }
