@@ -1,13 +1,13 @@
 
+b
+java:S1128"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ8ü¼ÚªÖ.
 h
 java:S1192""KDefine a constant instead of duplicating this literal "book_shelf" 3 times.(ëñø8ü¼ÚªÖ.
-f
-java:S1128	"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶¯ø¦úÿÿÿÿ8ü¼ÚªÖ.
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ü¼ÚªÖ.
 k
 java:S1192!"NDefine a constant instead of duplicating this literal "bookAttribute" 3 times.(ïÒ¾8ü¼ÚªÖ.
 f
+java:S1128	"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶¯ø¦úÿÿÿÿ8ü¼ÚªÖ.
+f
 java:S1192 "IDefine a constant instead of duplicating this literal "bookList" 3 times.(ÁıÜ’8ü¼ÚªÖ.
-b
-java:S1128"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ8ü¼ÚªÖ.
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ü¼ÚªÖ.

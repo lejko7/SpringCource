@@ -9,8 +9,6 @@ m
 +src/main/java/org/example/web/dto/User.java,8\4\84618407327779c440b8edae19bd2dae51bd234e
 j
 :src/main/java/org/example/app/services/BookRepository.java,3\1\31852a50ea0c7c7794f5d5ec6cad3c9fb31d7a25
-O
-src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 r
 Bsrc/main/java/org/example/web/controllers/BookShelfController.java,c\5\c57b26f9874129206ea6a0e3f8bfd8f4484f06fa
 ]
@@ -35,8 +33,6 @@ g
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
 L
 src/main/resources/log4j.xml,5\4\5443dc72a9e36d186f467e9b0cbab0598af8b898
-Q
-!src/main/resources/web-config.xml,1\0\10e2dbb1daf70514d0f4589e1c9a4ca92a9c538f
 M
 target/classes/app-config.xml,9\0\90902e64b0b94b32a2d91d915605902fe22525bf
 H
@@ -47,3 +43,14 @@ M
 Rtarget/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst,8\a\8ae396f369da14bb5c0973286facff8fb2c70d56
 €
 Ptarget/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst,3\d\3da01db98b88a8057c03354880f06dba49d3e795
+T
+$target/maven-archiver/pom.properties,5\a\5acbe6c306dee4498a010b1ca2096853e29e16a4
+_
+/target/simple_mvc/WEB-INF/views/book_shelf.html,8\2\82a1ca77ca308feb370bbc45503ce6688c39e2ad
+Z
+*target/Spring_Project/META-INF/MANIFEST.MF,0\1\01b966ce1c8fb05a0cfaed40be526c4930fa29e7
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+\
+,src/main/java/org/example/WebAppContext.java,c\9\c96c2b2b23e3cf8d6dabd4789573a3ce9cb6ac51
