@@ -36,7 +36,7 @@ public class LoginController {
             return "redirect:/books/shelf";
         } else {
             logger.info("login FAIL redirect back to login");
-            return "redirect:/login";
+            return "redirect:/404";
         }
     }
 }

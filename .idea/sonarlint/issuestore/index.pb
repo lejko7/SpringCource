@@ -37,20 +37,20 @@ M
 target/classes/app-config.xml,9\0\90902e64b0b94b32a2d91d915605902fe22525bf
 H
 target/classes/log4j.xml,6\b\6b05afe01d600b430062afc81c34b5f600d7066c
-M
-target/classes/web-config.xml,8\e\8e3838b1afe40827bb1870b17c5408cafab21da2
-‚
-Rtarget/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst,8\a\8ae396f369da14bb5c0973286facff8fb2c70d56
-€
-Ptarget/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst,3\d\3da01db98b88a8057c03354880f06dba49d3e795
-T
-$target/maven-archiver/pom.properties,5\a\5acbe6c306dee4498a010b1ca2096853e29e16a4
 _
 /target/simple_mvc/WEB-INF/views/book_shelf.html,8\2\82a1ca77ca308feb370bbc45503ce6688c39e2ad
-Z
-*target/Spring_Project/META-INF/MANIFEST.MF,0\1\01b966ce1c8fb05a0cfaed40be526c4930fa29e7
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 \
 ,src/main/java/org/example/WebAppContext.java,c\9\c96c2b2b23e3cf8d6dabd4789573a3ce9cb6ac51
+V
+&src/main/webapp/WEB-INF/views/404.html,3\4\34beefa43a457d653f9040768b0f31572b0eb21a
+n
+>src/main/java/org/example/web/controllers/ErrorController.java,5\0\50235e85dbd7791a2cc20fa3e43510df971f28db
+o
+?src/main/java/org/example/CustomException/ExceptionService.java,f\b\fb9de82aa89cbddaa3497f78fbd4676cdc8def31
+q
+Asrc/main/java/org/example/web/config/WebContextConfiguration.java,a\6\a6e18717691b721d907053fa9f8407cb668e7296
+\
+,src/main/java/org/example/SpringMvcInit.java,4\8\48dd27a3854ab573b5b9ed087ae5cd899db98ddc
