@@ -87,6 +87,19 @@
         <input type="submit" value="filter">
     </form>
 
+    <form method="post" th:action="@{/books/uploadFile}" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>
+                    <input type="file" name="file">
+                </td>
+                <td>
+                    <input type="submit" value="add book">
+                </td>
+            </tr>
+        </table>
+    </form>
+
     <div th:if="${bookList} != null">
         <table id="books">
             <tr>

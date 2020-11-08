@@ -8,6 +8,13 @@ import org.example.web.dto.Book;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 
 @Controller
 @RequestMapping(value = "/books")
@@ -58,5 +65,31 @@ public class BookShelfController {
         model.addAttribute("bookList", bookService.filterByParam(id, author, title, size, union));
         model.addAttribute("bookAttribute", EBookAttribute.values());
         return "book_shelf";
+    }
+
+    @PostMapping("/uploadFile")
+    public String uploadFile(@RequestParam MultipartFile file) throws IOException {
+        String name = file.getOriginalFilename();
+        byte[] bytes = file.getBytes();
+
+        String rootPath = System.getProperty("catalina.home");
+        File dir = new File(rootPath + File.separator + "uploads");
+
+        if (!dir.exists()){
+            dir.mkdirs();
+        }
+
+        File fileToSave = new File(dir.getAbsolutePath() + File.separator + name);
+        if (!fileToSave.exists()){
+            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fileToSave));
+            stream.write(bytes);
+            stream.close();
+        } else {
+            throw new FileAlreadyExistsException("File already exists!");
+        }
+
+        logger.info("File saved at: " + fileToSave.getAbsolutePath());
+
+        return "redirect:/books/shelf";
     }
 }
