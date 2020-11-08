@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.example.app.config.AppContextConfig;
 import org.example.web.config.WebContextConfiguration;
 import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -20,6 +21,7 @@ public class WebAppContext implements WebApplicationInitializer {
 
         AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
         appContext.register(AppContextConfig.class);
+        servletContext.addListener(new ContextLoaderListener(appContext));
 
         AnnotationConfigWebApplicationContext webContext = new AnnotationConfigWebApplicationContext();
         webContext.register(WebContextConfiguration.class);

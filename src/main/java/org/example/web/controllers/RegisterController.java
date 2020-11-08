@@ -3,7 +3,7 @@ package org.example.web.controllers;
 
 import lombok.AllArgsConstructor;
 import org.apache.log4j.Logger;
-import org.example.app.services.LoginService;
+import org.example.app.services.UserRepository;
 import org.example.web.dto.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @AllArgsConstructor
 public class RegisterController {
 
-    private final LoginService loginService;
+    private final UserRepository userRepository;
 
     private final Logger logger = Logger.getLogger(RegisterController.class);
 
@@ -30,7 +30,7 @@ public class RegisterController {
     @PostMapping
     public String registerNewUser(User user) throws Exception {
         logger.info("Any try registration!");
-        if (loginService.registration(user))
+        if (userRepository.registration(user))
             return "login_page";
         else throw new Exception("User with this name already exsist");
     }

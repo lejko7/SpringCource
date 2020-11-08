@@ -1,25 +1,21 @@
 package org.example.web.controllers;
 
+import lombok.AllArgsConstructor;
 import org.apache.log4j.Logger;
 import org.example.app.Enums.EBookAttribute;
 import org.example.app.services.BookService;
 import org.example.web.dto.Book;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(value = "/books")
+@AllArgsConstructor
 public class BookShelfController {
 
     private final Logger logger = Logger.getLogger(BookShelfController.class);
     private final BookService bookService;
-
-    @Autowired
-    public BookShelfController(BookService bookService) {
-        this.bookService = bookService;
-    }
 
     @GetMapping("/shelf")
     public String books(Model model) {

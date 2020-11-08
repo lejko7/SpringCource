@@ -2,34 +2,16 @@ package org.example.app.services;
 
 import org.example.app.Enums.EBookAttribute;
 import org.example.web.dto.Book;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class BookService {
+public interface BookService {
 
-    private final ProjectRepository<Book> bookRepo;
+    public List<Book> getAllBooks();
 
-    @Autowired
-    public BookService(ProjectRepository<Book> bookRepo) {
-        this.bookRepo = bookRepo;
-    }
+    public void saveBook(Book book);
 
-    public List<Book> getAllBooks() {
-        return bookRepo.retrieveAll();
-    }
+    public boolean removeBookByValue(EBookAttribute bookAttribute, String value);
 
-    public void saveBook(Book book) {
-        bookRepo.store(book);
-    }
-
-    public boolean removeBookByValue(EBookAttribute bookAttribute, String value) {
-        return bookRepo.removeItem(bookAttribute, value);
-    }
-
-    public List<Book> filterByParam(Long id, String author, String title, Integer size, boolean union) {
-        return bookRepo.filterBooks(id, author, title, size, union);
-    }
+    public List<Book> filterByParam(Long id, String author, String title, Integer size, boolean union);
 }

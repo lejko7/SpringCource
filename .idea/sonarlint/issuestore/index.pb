@@ -13,8 +13,6 @@ r
 Bsrc/main/java/org/example/web/controllers/BookShelfController.java,c\5\c57b26f9874129206ea6a0e3f8bfd8f4484f06fa
 ]
 -src/main/webapp/WEB-INF/views/book_shelf.html,5\a\5aafe1c771a1260966f312d4ab66c64389c5b6e6
-h
-8src/main/java/org/example/app/services/LoginService.java,2\2\2238bc4e3335e4f7cce6ff86319abe8a99afc27a
 >
 simple_mvc.iml,5\f\5fee6dec93df2f80fab705f806fb4d9f48b2bc3a
 7
@@ -33,8 +31,6 @@ g
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
 L
 src/main/resources/log4j.xml,5\4\5443dc72a9e36d186f467e9b0cbab0598af8b898
-M
-target/classes/app-config.xml,9\0\90902e64b0b94b32a2d91d915605902fe22525bf
 H
 target/classes/log4j.xml,6\b\6b05afe01d600b430062afc81c34b5f600d7066c
 _
@@ -52,5 +48,19 @@ o
 ?src/main/java/org/example/CustomException/ExceptionService.java,f\b\fb9de82aa89cbddaa3497f78fbd4676cdc8def31
 q
 Asrc/main/java/org/example/web/config/WebContextConfiguration.java,a\6\a6e18717691b721d907053fa9f8407cb668e7296
-\
-,src/main/java/org/example/SpringMvcInit.java,4\8\48dd27a3854ab573b5b9ed087ae5cd899db98ddc
+j
+:src/main/java/org/example/app/config/AppContextConfig.java,0\2\027906b625f968568fa75002177d891c5a0087c6
+k
+;src/main/java/org/example/app/config/AppSecurityConfig.java,0\e\0e426d9439ffe1eb696639c8fafa9ad7f9e48304
+f
+6src/main/java/org/example/app/config/SecurityInit.java,1\3\138dc69ca2aac6765af628f1fcbf257ef3a7c832
+k
+;src/main/java/org/example/app/services/BookServiceImpl.java,0\9\0924b371dbc7e7d02b274e46c6c0b19cf4fc40ed
+j
+:src/main/java/org/example/app/services/UserRepository.java,6\5\658a30c904d69d94c0d4adc21c6c8694072a564d
+r
+Bsrc/main/java/org/example/app/security/UserDetailsServiceImpl.java,e\4\e4eeb360f0634056e2b67c71d46eab0c57a9fef5
+a
+1src/main/java/org/example/app/security/ERole.java,0\d\0db1158634c4ba92fc1361c5939e640a39de61b3
+j
+:src/main/java/org/example/app/security/UserDetailsDto.java,a\b\aba42db2cccaff5be94273b7cecb642a66367428

@@ -13,7 +13,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class User {
 
-    private String userName;
+    private String username;
     private String password;
 
     @Override
@@ -21,12 +21,12 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return userName.equals(user.userName) &&
+        return username.equals(user.username) &&
                 password.equals(user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userName, password);
+        return Objects.hash(username, password);
     }
 }

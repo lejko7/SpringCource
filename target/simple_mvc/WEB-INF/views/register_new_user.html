@@ -6,7 +6,7 @@
 </head>
 <body>
     <form method="post" th:action="@{/register}" th:object="${user}">
-        <input class="login_item" type="text" placeholder="enter username" th:field="*{userName}">
+        <input class="login_item" type="text" placeholder="enter username" th:field="*{getUsername}">
         <br>
         <input class="login_item" type="password" placeholder="password" th:field="*{password}">
         <br>
