@@ -7,7 +7,13 @@ import org.example.web.dto.Book;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -80,6 +86,31 @@ public class BookRepository implements ProjectRepository<Book> {
                         (title.equals("") || book.getTitle().contains(title)) &&
                         (size == null || book.getSize().equals(size)))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void saveFile(MultipartFile file) throws IOException {
+
+        String name = file.getOriginalFilename();
+        byte[] bytes = file.getBytes();
+
+        String rootPath = System.getProperty("catalina.home");
+        File dir = new File(rootPath + File.separator + "uploads");
+
+        if (!dir.exists()){
+            dir.mkdirs();
+        }
+
+        File fileToSave = new File(dir.getAbsolutePath() + File.separator + name);
+        if (!fileToSave.exists()){
+            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fileToSave));
+            stream.write(bytes);
+            stream.close();
+        } else {
+            throw new FileAlreadyExistsException("File already exists!");
+        }
+
+        logger.info("File saved at: " + fileToSave.getAbsolutePath());
     }
 
     private boolean removeBySize(int size) {

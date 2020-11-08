@@ -4,6 +4,7 @@ import org.example.app.Enums.EBookAttribute;
 import org.example.web.dto.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -31,5 +32,10 @@ public class BookServiceImpl implements BookService {
 
     public List<Book> filterByParam(Long id, String author, String title, Integer size, boolean union) {
         return bookRepo.filterBooks(id, author, title, size, union);
+    }
+
+    @Override
+    public void saveFile(MultipartFile file) {
+        bookRepo.saveFile(file);
     }
 }

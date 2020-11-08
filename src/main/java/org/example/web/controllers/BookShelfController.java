@@ -69,26 +69,7 @@ public class BookShelfController {
 
     @PostMapping("/uploadFile")
     public String uploadFile(@RequestParam MultipartFile file) throws IOException {
-        String name = file.getOriginalFilename();
-        byte[] bytes = file.getBytes();
-
-        String rootPath = System.getProperty("catalina.home");
-        File dir = new File(rootPath + File.separator + "uploads");
-
-        if (!dir.exists()){
-            dir.mkdirs();
-        }
-
-        File fileToSave = new File(dir.getAbsolutePath() + File.separator + name);
-        if (!fileToSave.exists()){
-            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fileToSave));
-            stream.write(bytes);
-            stream.close();
-        } else {
-            throw new FileAlreadyExistsException("File already exists!");
-        }
-
-        logger.info("File saved at: " + fileToSave.getAbsolutePath());
+        bookService.saveFile(file);
 
         return "redirect:/books/shelf";
     }
