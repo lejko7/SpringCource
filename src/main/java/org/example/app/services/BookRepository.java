@@ -1,31 +1,46 @@
 package org.example.app.services;
 
+import lombok.AllArgsConstructor;
 import org.apache.log4j.Logger;
 import org.example.app.Enums.EBookAttribute;
 import org.example.web.dto.Book;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
+import java.sql.ResultSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
+@AllArgsConstructor
 public class BookRepository implements ProjectRepository<Book> {
 
     private final Logger logger = Logger.getLogger(BookRepository.class);
-    private final List<Book> books = new ArrayList<>();
+
+    private final NamedParameterJdbcTemplate jdbcTemplate;
 
     @Override
     public List<Book> retrieveAll() {
-        return books;
+        return jdbcTemplate.query("select * from books", (ResultSet rs, int rowNum) -> {
+            Book book = new Book();
+            book.setId((long) rs.getInt("id"));
+            book.setAuthor(rs.getString("author"));
+            book.setTitle(rs.getString("title"));
+            book.setSize(rs.getInt("size"));
+            return book;
+        });
     }
 
     @Override
     public void store(Book book) {
-        if (!book.getAuthor().equals("") || book.getId() != null || book.getSize() != null || !book.getTitle().equals("")) {
-            book.setId((long) book.hashCode());
+        if (!book.getAuthor().equals("") || book.getSize() != null || !book.getTitle().equals("")) {
             logger.info("store new book: " + book);
-            books.add(book);
+            MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+            parameterSource.addValue("author", book.getAuthor());
+            parameterSource.addValue("title", book.getTitle());
+            parameterSource.addValue("size", book.getSize());
+            jdbcTemplate.update("insert into books(author, title, size) values(:author, :title, :size)", parameterSource);
         } else {
             logger.info("Failed to store book! All fields are empty.");
         }
@@ -49,6 +64,9 @@ public class BookRepository implements ProjectRepository<Book> {
 
     @Override
     public List<Book> filterBooks(Long id, String author, String title, Integer size, boolean union) {
+
+        List<Book> books = retrieveAll();
+
         if (union){
             return books.stream().filter(book -> book.getId().equals(id) &&
                     (book.getAuthor().contains(author)) &&
@@ -65,63 +83,34 @@ public class BookRepository implements ProjectRepository<Book> {
     }
 
     private boolean removeBySize(int size) {
-        List<Book> booksToRemove = new ArrayList<>();
-        int countDeleted = 0;
-        for (Book book : books) {
-            if (book.getSize().equals(size)) {
-                logger.info("remove book completed: " + book);
-                booksToRemove.add(book);
-                countDeleted++;
-            }
-        }
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+        parameterSource.addValue("size", size);
+        jdbcTemplate.update("delete from books where size = :size", parameterSource);
 
-        books.removeAll(booksToRemove);
-
-        return countDeleted > 0;
+        return true;
     }
 
     private boolean removeByTitle(String title) {
-        List<Book> booksToRemove = new ArrayList<>();
-        int countDeleted = 0;
-        for (Book book : books) {
-            if (book.getTitle().equals(title)) {
-                logger.info("remove book completed: " + book);
-                booksToRemove.add(book);
-                countDeleted++;
-            }
-        }
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+        parameterSource.addValue("title", title);
+        jdbcTemplate.update("delete from books where title = :title", parameterSource);
 
-        books.removeAll(booksToRemove);
-
-        return countDeleted > 0;
+        return true;
     }
 
     private boolean removeByAuthor(String author) {
-        List<Book> booksToRemove = new ArrayList<>();
-        int countDeleted = 0;
-        for (Book book : books) {
-            if (book.getAuthor().equals(author)) {
-                logger.info("remove book completed: " + book);
-                booksToRemove.add(book);
-                countDeleted++;
-            }
-        }
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+        parameterSource.addValue("author", author);
+        jdbcTemplate.update("delete from books where author = :author", parameterSource);
 
-        books.removeAll(booksToRemove);
-
-        return countDeleted > 0;
+        return true;
     }
 
     private boolean removeById(long id) {
-        List<Book> booksToRemove = new ArrayList<>();
-        for (Book book : retrieveAll()) {
-            if (book.getId().equals(id)) {
-                logger.info("remove book completed: " + book);
-                booksToRemove.add(book);
-            }
-        }
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+        parameterSource.addValue("id", id);
+        jdbcTemplate.update("delete from books where id = :id", parameterSource);
 
-        books.removeAll(booksToRemove);
-        return false;
+        return true;
     }
 }
