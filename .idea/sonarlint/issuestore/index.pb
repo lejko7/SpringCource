@@ -52,8 +52,6 @@ j
 :src/main/java/org/example/app/config/AppContextConfig.java,0\2\027906b625f968568fa75002177d891c5a0087c6
 k
 ;src/main/java/org/example/app/config/AppSecurityConfig.java,0\e\0e426d9439ffe1eb696639c8fafa9ad7f9e48304
-f
-6src/main/java/org/example/app/config/SecurityInit.java,1\3\138dc69ca2aac6765af628f1fcbf257ef3a7c832
 k
 ;src/main/java/org/example/app/services/BookServiceImpl.java,0\9\0924b371dbc7e7d02b274e46c6c0b19cf4fc40ed
 j
@@ -64,3 +62,13 @@ a
 1src/main/java/org/example/app/security/ERole.java,0\d\0db1158634c4ba92fc1361c5939e640a39de61b3
 j
 :src/main/java/org/example/app/security/UserDetailsDto.java,a\b\aba42db2cccaff5be94273b7cecb642a66367428
+_
+/target/simple_mvc/WEB-INF/views/login_page.html,3\3\3319a3d3e12d202b6ad6f085ed42d68f9069d8e6
+f
+6target/simple_mvc/WEB-INF/views/register_new_user.html,5\e\5e741a3e9f05daa89985508ac1c7da09896a78de
+b
+2src/main/java/org/example/app/config/DbConfig.java,1\c\1c79189426634614eb0af27c69d0ccf548b3f806
+j
+:src/main/java/org/example/app/security/CommonSecurity.java,7\9\79ea34dbc9b22aa96c19b821340e9f764431b6ee
+^
+.src/main/java/org/example/web/dto/FileDto.java,1\a\1a9e0308df7717d83ab2e93b839875c6a7cc8784

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.apache.log4j.Logger;
 import org.example.app.Enums.EBookAttribute;
 import org.example.web.dto.Book;
+import org.example.web.dto.FileDto;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -56,13 +57,13 @@ public class BookRepository implements ProjectRepository<Book> {
     public boolean removeItem(EBookAttribute bookAttribute, String value) {
         switch (bookAttribute) {
             case ID:
-                return removeById(Long.parseLong(value));
+                return removeById(value);
             case AUTHOR:
                 return removeByAuthor(value);
             case TITLE:
                 return removeByTitle(value);
             case SIZE:
-                return removeBySize(Integer.parseInt(value));
+                return removeBySize(value);
             default:
                 return false;
         }
@@ -73,7 +74,7 @@ public class BookRepository implements ProjectRepository<Book> {
 
         List<Book> books = retrieveAll();
 
-        if (union){
+        if (union) {
             return books.stream().filter(book -> book.getId().equals(id) &&
                     (book.getAuthor().contains(author)) &&
                     (book.getTitle().contains(title)) &&
@@ -97,23 +98,57 @@ public class BookRepository implements ProjectRepository<Book> {
         String rootPath = System.getProperty("catalina.home");
         File dir = new File(rootPath + File.separator + "uploads");
 
-        if (!dir.exists()){
+        if (!dir.exists()) {
             dir.mkdirs();
         }
 
         File fileToSave = new File(dir.getAbsolutePath() + File.separator + name);
-        if (!fileToSave.exists()){
-            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fileToSave));
-            stream.write(bytes);
-            stream.close();
-        } else {
-            throw new FileAlreadyExistsException("File already exists!");
+        for (int i = 1; fileToSave.exists(); i++) {
+            int lastDotIndex = name.lastIndexOf('.');
+            String nameWithSuffix = name.substring(0, lastDotIndex) + "(" + i + ")" + name.substring(lastDotIndex);
+            fileToSave = new File(dir.getAbsolutePath() + File.separator + nameWithSuffix);
         }
+
+        name = fileToSave.getName();
+
+        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fileToSave));
+        stream.write(bytes);
+        stream.close();
+
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+        parameterSource.addValue("fileName", name);
+        parameterSource.addValue("filePath", "/simple_mvc_war_exploded/uploads/" + name);
+        parameterSource.addValue("fileType", file.getContentType());
+        jdbcTemplate.update("insert into files(fileName, filePath, fileType) values(:fileName, :filePath, :fileType)", parameterSource);
 
         logger.info("File saved at: " + fileToSave.getAbsolutePath());
     }
 
-    private boolean removeBySize(int size) {
+    @Override
+    public List<FileDto> getAllFiles() {
+        return getFiles();
+    }
+
+    private List<FileDto> getFiles() {
+        return jdbcTemplate.query("select * from files", (ResultSet rs, int rowNum) -> {
+            FileDto file = new FileDto();
+            file.setFileName(rs.getString("fileName"));
+            file.setFilePath(rs.getString("filePath"));
+            file.setFileType(rs.getString("fileType"));
+            return file;
+        });
+
+    }
+
+    private boolean removeBySize(String valueSize) {
+        long size;
+
+        try {
+            size = Integer.parseInt(valueSize);
+        } catch (Exception e){
+            return false;
+        }
+
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
         parameterSource.addValue("size", size);
         jdbcTemplate.update("delete from books where size = :size", parameterSource);
@@ -137,7 +172,15 @@ public class BookRepository implements ProjectRepository<Book> {
         return true;
     }
 
-    private boolean removeById(long id) {
+    private boolean removeById(String valueId) {
+        long id;
+
+        try {
+            id = Long.parseLong(valueId);
+        } catch (Exception e){
+            return false;
+        }
+
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
         parameterSource.addValue("id", id);
         jdbcTemplate.update("delete from books where id = :id", parameterSource);

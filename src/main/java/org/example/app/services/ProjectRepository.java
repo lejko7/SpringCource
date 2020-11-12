@@ -2,6 +2,7 @@ package org.example.app.services;
 
 import org.example.app.Enums.EBookAttribute;
 import org.example.web.dto.Book;
+import org.example.web.dto.FileDto;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -17,4 +18,6 @@ public interface ProjectRepository<T> {
     List<Book> filterBooks(Long id, String author, String title, Integer size, boolean union);
 
     void saveFile(MultipartFile file) throws IOException;
+
+    List<FileDto> getAllFiles();
 }

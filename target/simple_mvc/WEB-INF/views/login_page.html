@@ -27,11 +27,15 @@
         <br>
         <input class="login_item" type="submit" value="login">
     </form>
+    <div th:if="${error == true}">
+        <p>
+            User not found! Maybe register?
+        </p>
+    </div>
     <form method="get" th:action="@{/register}">
         <label class="login_item">Haven't account? Register!</label>
         <input class="login_item" type="submit" value="register">
     </form>
-    <label th:text="${error}"></label>
 </div>
 </body>
 </html>

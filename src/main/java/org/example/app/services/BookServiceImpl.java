@@ -2,10 +2,12 @@ package org.example.app.services;
 
 import org.example.app.Enums.EBookAttribute;
 import org.example.web.dto.Book;
+import org.example.web.dto.FileDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -35,7 +37,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void saveFile(MultipartFile file) {
+    public void saveFile(MultipartFile file) throws IOException {
         bookRepo.saveFile(file);
+    }
+
+    @Override
+    public List<FileDto> getAllFiles() {
+        return bookRepo.getAllFiles();
     }
 }

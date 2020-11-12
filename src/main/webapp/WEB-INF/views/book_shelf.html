@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -43,10 +44,13 @@
                     <input type="text" placeholder="book_title" th:field="*{title}">
                 </td>
                 <td>
-                    <input type="text" placeholder="size (pages)" th:field="*{size}">
+                    <input type="number" placeholder="size (pages)" th:field="*{size}">
                 </td>
                 <td>
                     <input type="submit" value="save">
+                </td>
+                <td th:if="${saveError == true}">
+                    Wrong value!
                 </td>
             </tr>
         </table>
@@ -71,33 +75,28 @@
                 <td>
                     <input type="submit" value="remove">
                 </td>
+                <td th:if="${removeError == true}">
+                    <label>
+                        Incorrect value!
+                    </label>
+                </td>
             </tr>
         </table>
     </form>
 
     <form method="post" th:action="@{/books/filter}">
-        <input placeholder="" th:type="text" th:name="id">
-        <input placeholder="" th:type="text" th:name="author">
-        <input placeholder="" th:type="text" th:name="title">
-        <input placeholder="" th:type="text" th:name="size">
+        <input placeholder="id" th:type="number" th:name="id">
+        <input placeholder="author" th:type="text" th:name="author">
+        <input placeholder="title" th:type="text" th:name="title">
+        <input placeholder="size" th:type="number" th:name="size">
         <label>
             <input th:type="checkbox" th:name="union">
             Filer by all params
         </label>
         <input type="submit" value="filter">
-    </form>
-
-    <form method="post" th:action="@{/books/uploadFile}" enctype="multipart/form-data">
-        <table>
-            <tr>
-                <td>
-                    <input type="file" name="file">
-                </td>
-                <td>
-                    <input type="submit" value="add book">
-                </td>
-            </tr>
-        </table>
+        <label th:if="${filterError == true}">
+            Any value is incorrect!
+        </label>
     </form>
 
     <div th:if="${bookList} != null">
@@ -113,6 +112,37 @@
                 <td th:text="${book.author}"></td>
                 <td th:text="${book.title}"></td>
                 <td th:text="${book.size}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <form method="post" th:action="@{/books/uploadFile}" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>
+                    <input type="file" name="file">
+                </td>
+                <td>
+                    <input type="submit" value="add book">
+                </td>
+                <td th:if="${saveFileError == true}">
+                    Select a file!
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <div th:if="${filesList} != null">
+        <table id="files">
+            <tr>
+                <th>FileName</th>
+                <th>Download</th>
+            </tr>
+            <tr id="filesList" th:each="file : ${filesList}">
+                <td th:text="${file.fileName}"></td>
+                <td>
+                    <a th:href="${file.filePath}" download>Download</a>
+                </td>
             </tr>
         </table>
     </div>
