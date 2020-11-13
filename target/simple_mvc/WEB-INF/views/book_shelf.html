@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <title>My book shelf</title>
     <style>
+        #logout_form{
+            background-color: chocolate;
+            position: absolute;
+            right: 5%;
+            top: 5%;
+        }
+
         #root_container {
             position: absolute;
             left: 50%;
@@ -33,6 +40,9 @@
     </style>
 </head>
 <body>
+<form id="logout_form" method="post" th:action="@{/logout}">
+    <input type="submit" value="logout">
+</form>
 <div id="root_container">
     <form method="post" th:action="@{/books/save}" th:object="${book}">
         <table>
@@ -77,7 +87,7 @@
                 </td>
                 <td th:if="${removeError == true}">
                     <label>
-                        Any value is not found when remove!
+                        Incorrect value!
                     </label>
                 </td>
             </tr>

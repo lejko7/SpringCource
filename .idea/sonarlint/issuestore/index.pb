@@ -44,8 +44,6 @@ V
 &src/main/webapp/WEB-INF/views/404.html,3\4\34beefa43a457d653f9040768b0f31572b0eb21a
 n
 >src/main/java/org/example/web/controllers/ErrorController.java,5\0\50235e85dbd7791a2cc20fa3e43510df971f28db
-o
-?src/main/java/org/example/CustomException/ExceptionService.java,f\b\fb9de82aa89cbddaa3497f78fbd4676cdc8def31
 q
 Asrc/main/java/org/example/web/config/WebContextConfiguration.java,a\6\a6e18717691b721d907053fa9f8407cb668e7296
 j
@@ -72,3 +70,9 @@ j
 :src/main/java/org/example/app/security/CommonSecurity.java,7\9\79ea34dbc9b22aa96c19b821340e9f764431b6ee
 ^
 .src/main/java/org/example/web/dto/FileDto.java,1\a\1a9e0308df7717d83ab2e93b839875c6a7cc8784
+u
+Esrc/main/java/org/example/CustomException/EmptyResourceException.java,0\0\00b8fdabab80ac78b1e6216bd434dd9ff9c51a6c
+s
+Csrc/main/java/org/example/web/errorController/ExceptionService.java,d\b\dba9f35b0b02f10ef07d05ecb43f3c760b9ef1c2
+V
+&target/simple_mvc/META-INF/MANIFEST.MF,8\4\849a1b846ecce8bad9cdaa0bad364480f2e12433

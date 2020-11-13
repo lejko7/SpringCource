@@ -1,17 +1,13 @@
 
-d
-java:S1128"BRemove this unused import 'javax.validation.constraints.NotBlank'.(µã‡ıÿÿÿÿ8·ò¨øÚ.
-s
-java:S11924"VDefine a constant instead of duplicating this literal "redirect:/books/shelf" 3 times.(Ø’ˆÉ8“¢ıõÚ.
-g
-java:S1192%"JDefine a constant instead of duplicating this literal "filesList" 4 times.(Òÿ©¼8“¢ıõÚ.
 k
-java:S1192$"NDefine a constant instead of duplicating this literal "bookAttribute" 4 times.(ïÒ¾8“¢ıõÚ.
-i
-java:S1128"GRemove this unused import 'org.hibernate.validator.constraints.Length'.(Ê—œªÿÿÿÿÿ8¬…ÁøÚ.
-h
-java:S1192&"KDefine a constant instead of duplicating this literal "book_shelf" 4 times.(ëñø8“¢ıõÚ.
-^
-java:S1128"BRemove this unused import 'javax.validation.constraints.NotEmpty'.(ÿÿör8ˆçµøÚ.
+java:S1192'"NDefine a constant instead of duplicating this literal "bookAttribute" 3 times.(ïÒ¾8“¢ıõÚ.
 f
-java:S1192#"IDefine a constant instead of duplicating this literal "bookList" 4 times.(ÁıÜ’8“¢ıõÚ.
+java:S1192&"IDefine a constant instead of duplicating this literal "bookList" 3 times.(ÁıÜ’8“¢ıõÚ.
+h
+java:S1192-"KDefine a constant instead of duplicating this literal "book_shelf" 3 times.(ëñø8“¢ıõÚ.
+l
+java:S1128"ORemove this unused import 'org.example.CustomException.EmptyResourceException'.(Âèô8í¬½çÛ.
+g
+java:S1192("JDefine a constant instead of duplicating this literal "filesList" 3 times.(Òÿ©¼8“¢ıõÚ.
+b
+java:S1128"@Remove this unused import 'javax.validation.constraints.Digits'.(µÍƒ¨ÿÿÿÿÿ8ÄÒõçÛ.

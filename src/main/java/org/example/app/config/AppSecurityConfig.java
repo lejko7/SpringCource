@@ -31,17 +31,21 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.headers().frameOptions().disable();
         http
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/register").permitAll()
-                .antMatchers("/login*").permitAll()
-                .anyRequest().authenticated()
+                    .csrf().disable()
+                    .authorizeRequests()
+                    .antMatchers("/register").permitAll()
+                    .antMatchers("/login*").permitAll()
+                    .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/login/auth")
-                .defaultSuccessUrl("/books/shelf", true)
-                .failureUrl("/login");
+                    .formLogin()
+                    .loginPage("/login")
+                    .loginProcessingUrl("/login/authentication")
+                    .defaultSuccessUrl("/books/shelf", true)
+                    .failureUrl("/login")
+                .and()
+                    .logout()
+                    .logoutUrl("/logout")
+                .logoutSuccessUrl("/login");
     }
 
     @Override

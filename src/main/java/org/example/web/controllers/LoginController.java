@@ -16,12 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
     private final Logger logger = Logger.getLogger(LoginController.class);
-    private final UserRepository userRepository;
-
-    @Autowired
-    public LoginController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @GetMapping
     public String login(Model model,
@@ -30,17 +24,5 @@ public class LoginController {
         model.addAttribute("user", new User());
         model.addAttribute("error", error);
         return "login_page";
-    }
-
-    @PostMapping("/auth")
-    public String authenticate(User user) {
-        logger.info("try to auth");
-        if (userRepository.authenticate(user)) {
-            logger.info("login OK redirect to book shelf");
-            return "redirect:/books/shelf";
-        } else {
-            logger.info("login FAIL redirect back to login");
-            return "redirect:/login?error=true";
-        }
     }
 }
