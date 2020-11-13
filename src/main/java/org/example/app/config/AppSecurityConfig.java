@@ -41,11 +41,12 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login")
                     .loginProcessingUrl("/login/authentication")
                     .defaultSuccessUrl("/books/shelf", true)
-                    .failureUrl("/login")
+                    .failureUrl("/login?error=true")
                 .and()
                     .logout()
                     .logoutUrl("/logout")
-                .logoutSuccessUrl("/login");
+                    .deleteCookies("JSESSIONID")
+                    .logoutSuccessUrl("/login");
     }
 
     @Override
