@@ -1,13 +1,13 @@
 
-k
-java:S1192'"NDefine a constant instead of duplicating this literal "bookAttribute" 3 times.(ïÒ¾8“¢ıõÚ.
-f
-java:S1192&"IDefine a constant instead of duplicating this literal "bookList" 3 times.(ÁıÜ’8“¢ıõÚ.
-h
-java:S1192-"KDefine a constant instead of duplicating this literal "book_shelf" 3 times.(ëñø8“¢ıõÚ.
-l
-java:S1128"ORemove this unused import 'org.example.CustomException.EmptyResourceException'.(Âèô8í¬½çÛ.
 g
 java:S1192("JDefine a constant instead of duplicating this literal "filesList" 3 times.(Òÿ©¼8“¢ıõÚ.
 b
 java:S1128"@Remove this unused import 'javax.validation.constraints.Digits'.(µÍƒ¨ÿÿÿÿÿ8ÄÒõçÛ.
+l
+java:S1128"ORemove this unused import 'org.example.CustomException.EmptyResourceException'.(Âèô8í¬½çÛ.
+h
+java:S1192-"KDefine a constant instead of duplicating this literal "book_shelf" 3 times.(ëñø8“¢ıõÚ.
+f
+java:S1192&"IDefine a constant instead of duplicating this literal "bookList" 3 times.(ÁıÜ’8“¢ıõÚ.
+k
+java:S1192'"NDefine a constant instead of duplicating this literal "bookAttribute" 3 times.(ïÒ¾8“¢ıõÚ.

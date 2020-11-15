@@ -117,7 +117,7 @@ public class BookRepository implements ProjectRepository<Book> {
 
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
         parameterSource.addValue("fileName", name);
-        parameterSource.addValue("filePath", "/simple_mvc_war_exploded/uploads/" + name);
+        parameterSource.addValue("filePath", "/uploads/" + name);
         parameterSource.addValue("fileType", file.getContentType());
         jdbcTemplate.update("insert into files(fileName, filePath, fileType) values(:fileName, :filePath, :fileType)", parameterSource);
 

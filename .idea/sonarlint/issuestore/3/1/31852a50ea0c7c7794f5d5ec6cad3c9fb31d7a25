@@ -1,11 +1,11 @@
 
-h
-java:S1192$"FDefine a constant instead of duplicating this literal "title" 3 times.(åàØıÿÿÿÿ8æùšõÚ.
-o
-java:S2095r"RUse try-with-resources or close this "BufferedOutputStream" in a "finally" clause.(Óäó¡8æùšõÚ.
-b
-java:S1128"ERemove this unused import 'java.nio.file.FileAlreadyExistsException'.(¥ß×³8æùšõÚ.
-d
-java:S1192#"GDefine a constant instead of duplicating this literal "author" 3 times.(ï¹ÉÈ8æùšõÚ.
 d
 java:S2259k"BA "NullPointerException" could be thrown; "name" is nullable here.(–Éÿüÿÿÿÿ8æùšõÚ.
+o
+java:S2095r"RUse try-with-resources or close this "BufferedOutputStream" in a "finally" clause.(Óäó¡8æùšõÚ.
+d
+java:S1192#"GDefine a constant instead of duplicating this literal "author" 3 times.(ï¹ÉÈ8æùšõÚ.
+h
+java:S1192$"FDefine a constant instead of duplicating this literal "title" 3 times.(åàØıÿÿÿÿ8æùšõÚ.
+b
+java:S1128"ERemove this unused import 'java.nio.file.FileAlreadyExistsException'.(¥ß×³8æùšõÚ.

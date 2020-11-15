@@ -151,7 +151,7 @@
             <tr id="filesList" th:each="file : ${filesList}">
                 <td th:text="${file.fileName}"></td>
                 <td>
-                    <a th:href="${file.filePath}" download>Download</a>
+                    <a th:href="${#servletContext.getContextPath()} + ${file.filePath}" download>Download</a>
                 </td>
             </tr>
         </table>
