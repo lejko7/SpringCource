@@ -7,10 +7,13 @@ import org.example.app.services.UserRepository;
 import org.example.web.dto.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/register")
@@ -30,12 +33,11 @@ public class RegisterController {
     }
 
     @PostMapping
-    public String registerNewUser(Model model, User user) throws Exception {
+    public String registerNewUser(@Valid User user, BindingResult bindingResult) {
         logger.info("Any try registration!");
-        if (userRepository.registration(user)) {
+        if (!bindingResult.hasErrors() && userRepository.registration(user)) {
             return "login_page";
-        }
-        else {
+        } else {
             return "redirect:/register?error=true";
         }
     }
