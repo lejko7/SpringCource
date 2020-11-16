@@ -2,4 +2,7 @@
 Spring cource project
 
 
-Добавлены базовые эндпоинты
+Сейчас есть:
+1. DB h2
+2. Security
+3. Java-based конфигурация вместо xml
