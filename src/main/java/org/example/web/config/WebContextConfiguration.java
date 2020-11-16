@@ -1,5 +1,6 @@
 package org.example.web.config;
 
+import lombok.AllArgsConstructor;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,9 +18,11 @@ import java.io.File;
 @Configuration
 @ComponentScan(basePackages = "org.example.web")
 @EnableWebMvc
+@AllArgsConstructor
 public class WebContextConfiguration implements WebMvcConfigurer {
 
     private final Logger logger = Logger.getLogger(WebContextConfiguration.class);
+    PathResolver pathResolver;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -29,7 +32,9 @@ public class WebContextConfiguration implements WebMvcConfigurer {
         registry
                 .addResourceHandler("/uploads/**")
                 .addResourceLocations("file:" + System.getProperty("catalina.home") + File.separator + "uploads/")
-                .setCachePeriod(0);
+                .setCachePeriod(0)
+                .resourceChain(true)
+                .addResolver(pathResolver);
     }
 
     @Bean

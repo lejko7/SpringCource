@@ -1,6 +1,8 @@
 package org.example.app.services;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.apache.log4j.Logger;
 import org.example.app.Enums.EBookAttribute;
 import org.example.web.dto.Book;
@@ -14,18 +16,18 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class BookRepository implements ProjectRepository<Book> {
 
-    private final Logger logger = Logger.getLogger(BookRepository.class);
+    Logger logger = Logger.getLogger(BookRepository.class);
 
-    private final NamedParameterJdbcTemplate jdbcTemplate;
+    NamedParameterJdbcTemplate jdbcTemplate;
 
     @Override
     public List<Book> retrieveAll() {
@@ -119,6 +121,7 @@ public class BookRepository implements ProjectRepository<Book> {
         parameterSource.addValue("fileName", name);
         parameterSource.addValue("filePath", "/uploads/" + name);
         parameterSource.addValue("fileType", file.getContentType());
+
         jdbcTemplate.update("insert into files(fileName, filePath, fileType) values(:fileName, :filePath, :fileType)", parameterSource);
 
         logger.info("File saved at: " + fileToSave.getAbsolutePath());
